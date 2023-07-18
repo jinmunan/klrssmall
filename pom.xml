@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.klrss</groupId>
+    <artifactId>klrssmall</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>klrssmall</name>
+    <description>聚合工程</description>
+    <modules>
+        <module>klrssmall-common</module>
+        <module>klrssmall-coupon</module>
+        <module>klrssmall-member</module>
+        <module>klrssmall-order</module>
+        <module>klrssmall-product</module>
+        <module>klrssmall-ware</module>
+        <module>klrssmall-gateway</module>
+        <module>klrssmall-third-server</module>
+    </modules>
+</project>

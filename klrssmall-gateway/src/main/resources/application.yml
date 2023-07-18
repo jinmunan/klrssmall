@@ -1,0 +1,54 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    #    sentinel:
+    #      transport:
+    #        dashboard: localhost:8333
+    #        port: 8719
+    gateway:
+      # 越往上越精确匹配
+      routes:
+        # 配置第三方服务路由网关
+        - id: third_server_route
+          uri: lb://klrssmall-third-server
+          predicates:
+            - Path=/api/third/server/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+        # 商品路由 精准匹配 高优先级
+        - id: product_route
+          uri: lb://klrssmall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            # 重写网关转发地址
+            # 将localhost:88/api/foo 转换成 localhost:10000/foo
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+        # renren网关路由配置 模糊匹配 低优先级
+        - id: admin_route
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            # 重写网关转发地址
+            # 将localhost:88/api/foo 转换成 localhost:8080/renren-fast/foo
+            - RewritePath=/api/?(?<segment>.*), /renren-fast/$\{segment}
+        # 测试：查询接口带参数时跳转页面
+        - id: baidu_route
+          uri: http://www.baidu.com
+          predicates:
+            - Query=url,baidu
+        - id: qq_route
+          uri: http://www.qq.com
+          predicates:
+            - Query=url,qq
+  application:
+    name: klrssmall-gateway
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+server:
+  port: 88

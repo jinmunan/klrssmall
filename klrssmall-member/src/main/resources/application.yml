@@ -1,0 +1,69 @@
+ip-address: 193.111.30.163
+spring:
+  datasource:
+    #MySQL配置
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${ip-address}:3306/gulimall_ums?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: jinmunan123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  #    sentinel:
+  #      transport:
+  #        dashboard: localhost:8333
+  #        port: 8719
+  application:
+    name: klrssmall-product
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8
+#  mvc:
+#    static-path-pattern: /static/**
+#  thymeleaf:
+#    cache: true
+#    suffix: .html
+#    prefix: classpath:/templates/
+#  session:
+#    store-type: redis
+#  redis:
+#    host: ${ip-address}
+#    port: 6379
+#    password: linkekun
+#
+#  #   设置缓存类型
+#  cache:
+#    type: redis
+#    #   设置存活时间
+#    redis:
+#      time-to-live: 3600000
+#      #      如果指定了前缀就用我们指定的 如果没有就用缓存的名字作为前缀
+#      #      key-prefix: CACHE_
+#      #      是否缓存空值,解决缓存穿透问题
+#      cache-null-values: true
+##    cache-names:
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      # 主键自增
+      id-type: auto
+      # 配置逻辑删除 1代表删除 0代表已删除
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+server:
+  port: 8000
+
+logging:
+  level:
+    com.klrss.klrssmall: debug
+
+klrssmall:
+  thread:
+    core-size: 20
+    max-size: 200
+    keep-alive-time: 10

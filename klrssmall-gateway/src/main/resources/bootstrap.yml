@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: klrssmall-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: e3262301-9f3a-443f-aeed-f229de6c8ae2

@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: klrssmall-third-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    #    sentinel:
+    #      transport:
+    #        dashboard: localhost:8333
+    #        port: 8719
+    alicloud:
+      oss:
+        endpoint: oss-cn-hangzhou.aliyuncs.com
+        bucket: klrssmall
+      access-key: LTAI5tCwbti6N6gGGzV8RfSB
+      secret-key: xrQZKhS8IQoRG3YpEaXgaST3w1vxRC
+#      sms:
+#        host: https://fesms.market.alicloudapi.com
+#        path: /sms/
+#        skin: 1
+#        sign: 175622
+#        appcode: b0563c23aff8428c97a54d4f7f9e28e5
+server:
+  port: 30000
